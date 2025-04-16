@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results for {{ query }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .card input[type="checkbox"] {
+            margin-bottom: 10px;
+        }
+
+        .card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 10px 30px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Results for "{{ query }}"</h2>
+
+    <form action="/generate_ppt" method="POST">
+        <div class="product-container">
+            {% for product in products %}
+                {% set i = loop.index0 %}
+                <div class="card">
+                    <input type="checkbox" name="selected_products" value="{{ i }}" id="product-{{ i }}">
+                    <label for="product-{{ i }}"><strong>{{ product.name }}</strong></label><br>
+
+                    <img src="{{ product.image }}" alt="Product Image"><br>
+                    <a href="{{ product.url }}" target="_blank">View Product</a>
+
+                    <!-- Hidden fields to persist product data -->
+                    <input type="hidden" name="name" value="{{ product.name }}">
+                    <input type="hidden" name="image" value="{{ product.image }}">
+                    <input type="hidden" name="url" value="{{ product.url }}">
+                </div>
+            {% endfor %}
+        </div>
+        <button class="submit-btn" type="submit">Generate PPT</button>
+    </form>
+
+</body>
+</html>
