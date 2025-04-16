@@ -1,6 +1,7 @@
-flask
-python-dotenv
-google-generativeai
-serpapi
+Flask
+gunicorn
 requests
 python-pptx
+pillow
+opencv-python
+numpy
