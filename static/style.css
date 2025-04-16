@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+.loader {
+    margin-top: 20px;
+}
