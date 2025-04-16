@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Search for Products</h2>
+    <form method="POST">
+        <input type="text" name="product" required placeholder="Enter product name">
+        <button type="submit">Search</button>
+    </form>
+    <div class="loader" id="loader" style="display:none;">
+        <img src="{{ url_for('static', filename='loader.gif') }}" alt="Loading...">
+    </div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function() {
+            document.getElementById("loader").style.display = "block";
+        });
+    </script>
+</body>
+</html>
