@@ -14,7 +14,7 @@ app = Flask(__name__)
 RAPIDAPI_URL = "https://google-search-master-mega.p.rapidapi.com/shopping"
 HEADERS = {
     "x-rapidapi-host": "google-search-master-mega.p.rapidapi.com",
-    "x-rapidapi-key": "3ff8754e1bmsh6199b185d80c9c9p14c709jsn22be61e4d3f3"  # Replace with your key
+    "x-rapidapi-key": os.environ.get("RAPIDAPI_KEY")  # Read from environment
 }
 
 # Ensure static folder exists
